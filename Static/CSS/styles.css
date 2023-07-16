@@ -10,3 +10,14 @@
 .modal-header {
     border-bottom: 0px;
 }
+
+.counter {
+    font-size: 0.5em;
+    margin-left: 1.2em;
+    font-weight: bold;
+}
+
+header {
+    margin-bottom: 45px;
+}
+
