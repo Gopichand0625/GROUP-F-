@@ -1,4 +1,4 @@
-from app import db
+from app import app,db
 from models import Users, Cart, Books, Purchases
 
 def insert_user_data():
@@ -148,10 +148,12 @@ def insert_books_data():
 
 
 if __name__ == '__main__':
-    insert_user_data()
-    insert_cart_data()
-    insert_purchase_data()
-    insert_books_data()
+    with app.app_context():
+        app.app_context().push()
+        insert_user_data()
+        insert_cart_data()
+        insert_purchase_data()
+        insert_books_data()
 
 
 db.session.commit()

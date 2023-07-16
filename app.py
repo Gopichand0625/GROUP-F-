@@ -1,9 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+
 from models import Cart, Purchases, Users, Books
+
+if __name__ == '__main__':
+    app.run()
