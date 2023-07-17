@@ -25,10 +25,10 @@ def index():
         for i in range(shopLen):
             total += shoppingCart[i]["SUM(subTotal)"]
             totItems += shoppingCart[i]["SUM(qty)"]
-        books = db.execute("select * FROM books")
+        books = db.execute("SELECT * FROM books")
         booksLen = len(books)
         return render_template ("index.html", shoppingCart=shoppingCart, books=books, shopLen=shopLen, booksLen=booksLen, total=total, totItems=totItems, display=display, session=session )
-    return render_template ( "index.html", books=books, shoppingCart=shoppingCart, booksLen=booksLen, shopLen=shopLen, total=total, totItems=totItems, display=display)
+    return render_template ("index.html", books=books, shoppingCart=shoppingCart, booksLen=booksLen, shopLen=shopLen, total=total, totItems=totItems, display=display)
 
 @app.route("/login/", methods=["GET"])
 def login():
@@ -68,6 +68,9 @@ def logged():
         session['time'] = datetime.now( )
         session['uid'] = rows[0]["id"]
 
+    if 'user' in session:
+        return redirect ( "/" )
+    return render_template ( "login.html", msg="invalid username or password." )
        
 @app.route("/purchase_history/")
 def history():
