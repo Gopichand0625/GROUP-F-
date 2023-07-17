@@ -97,6 +97,8 @@ def cart():
 @app.route("/remove/", methods=["GET"])
 def remove():
      out = int(request.args.get("id"))
+     db.execute("DELETE from cart WHERE id=:id", id=out)
+     totItems, total, display = 0, 0, 0
      
 
 
