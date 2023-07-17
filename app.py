@@ -1,4 +1,4 @@
-from flask import Flask, render_template,session, redirect
+from flask import Flask, render_template,session, redirect,request
 from flask_sqlalchemy import SQLAlchemy
 from cs50 import SQL
 from flask_session import Session
@@ -38,7 +38,17 @@ def login():
 
 @app.route("/signup/", methods=["GET"])
 def signup():
-    return render_template("signup.html")
+    uname = request.form["uname"]
+    pwd = request.form["pwd"]
+    fname = request.form["fname"]
+    lname = request.form["lname"]
+    email = request.form["email"]
+    rows = db.execute( "SELECT * FROM users WHERE username = :username ", username = uname )    
+    if len( rows ) > 0:
+        return render_template ( "new.html", msg="Username already exists!" )    
+    new = db.execute ( "INSERT INTO users (username, password, fname, lname, email) VALUES (:uname, :pwd, :fname, :lname, :email)",
+                    username=uname, password=pwd, fname=fname, lname=lname, email=email )    
+    return render_template ( "login.html" )
 
 @app.route("/logout/")
 def logout():
