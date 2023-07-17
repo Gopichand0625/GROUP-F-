@@ -57,6 +57,16 @@ def logout():
     return redirect("/")
 
 
+@app.route("/purchase_history/")
+def history():
+    shoppingCart = []
+    shopLen = len(shoppingCart)
+    totItems=0
+    total=0
+    display=0
+    myBooks = db.execute("SELECT * FROM purchases WHERE uid=:uid", uid=session["uid"])
+    myBooksLen = len(myShirts)
+    return render_template("purchase_history.html", shoppingCart=shoppingCart, shopLen=shopLen, total=total, totItems=totItems, display=display, session=session, myBooks=myBooks, myBooksLen=myBooksLen)
 
 
 if __name__ == '__main__':
