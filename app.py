@@ -63,7 +63,12 @@ def logged():
     query = "SELECT * FROM users WHERE username = :user AND password = :pwd"
     rows = db.execute ( query, user=user, pwd=pwd )
 
-    
+    if len(rows) == 1:
+        session['user'] = user
+        session['time'] = datetime.now( )
+        session['uid'] = rows[0]["id"]
+
+       
 @app.route("/purchase_history/")
 def history():
     shoppingCart = []
