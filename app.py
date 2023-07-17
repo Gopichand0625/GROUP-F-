@@ -60,7 +60,10 @@ def logged():
     pwd = request.form["pwd"]
     if user == "" or pwd == "":
         return render_template ( "login.html" )
+    query = "SELECT * FROM users WHERE username = :user AND password = :pwd"
+    rows = db.execute ( query, user=user, pwd=pwd )
 
+    
 @app.route("/purchase_history/")
 def history():
     shoppingCart = []
