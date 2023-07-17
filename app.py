@@ -1,4 +1,4 @@
-from flask import Flask, render_template,session
+from flask import Flask, render_template,session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from cs50 import SQL
 from flask_session import Session
@@ -31,6 +31,23 @@ def index():
         booksLen = len(books)
         return render_template ("index.html", shoppingCart=shoppingCart, books=books, shopLen=shopLen, booksLen=booksLen, total=total, totItems=totItems, display=display, session=session )
     return render_template ( "index.html", books=books, shoppingCart=shoppingCart, booksLen=booksLen, shopLen=shopLen, total=total, totItems=totItems, display=display)
+
+@app.route("/login/", methods=["GET"])
+def login():
+    return render_template("login.html")
+
+@app.route("/signup/", methods=["GET"])
+def signup():
+    return render_template("signup.html")
+
+@app.route("/logout/")
+def logout():
+    db.execute("delete from cart")
+    session.clear()
+    return redirect("/")
+
+
+
 
 if __name__ == '__main__':
     app.run()
