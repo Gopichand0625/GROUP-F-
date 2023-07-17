@@ -94,6 +94,12 @@ def cart():
             totItems += shoppingCart[i]["SUM(qty)"]    
     return render_template("cart.html", shoppingCart=shoppingCart, shopLen=shopLen, total=total, totItems=totItems, display=display, session=session)
 
+@app.route("/remove/", methods=["GET"])
+def remove():
+     out = int(request.args.get("id"))
+     
+
+
 
 if __name__ == '__main__':
     app.run()
