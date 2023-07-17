@@ -102,3 +102,10 @@ function validate ( )
     }
 }
 
+$(document).ready ( validate );
+USERNAME.change ( validate );
+PASSWORD.change ( validate );
+CONFIRM.change ( validate );
+LNAME.change ( validate );
+FNAME.change ( validate );
+EMAIL.change ( validate );
