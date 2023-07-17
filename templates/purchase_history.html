@@ -21,7 +21,7 @@
                 {% for i in range(myBooksLen) %}
               <tr>
                 <th scope="row">{{ i + 1 }}</th>
-                <td><img src="/static_images/img/{{ myBooks[i]["image"] }}" width="30px" alt="{{ myBooks[i]["team"] }}" /></td>
+                <td><img src="/Static/Images/{{ myBooks[i]["image"] }}" width="30px" alt="{{ myBooks[i]["team"] }}" /></td>
                 <td>{{ myBooks[i]["quantity"] }}</td>
                 <td>{{ myBooks[i]["date"] }}</td>
                 <td><a href="/filter/?id={{ myBooks[i]["id"] }}"><button type="button" class="btn btn-warning">Purchase Again</button></a></td>

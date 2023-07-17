@@ -9,9 +9,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-
 db = SQL ( "sqlite:///data.db" )
-
 @app.route("/")
 def index():
     books = db.execute("select * FROM books")
@@ -56,6 +54,12 @@ def logout():
     session.clear()
     return redirect("/")
 
+@app.route("/logged/", methods=["POST"] )
+def logged():
+    user = request.form["uname"].lower()
+    pwd = request.form["pwd"]
+    if user == "" or pwd == "":
+        return render_template ( "login.html" )
 
 @app.route("/purchase_history/")
 def history():
@@ -67,6 +71,17 @@ def history():
     myBooks = db.execute("SELECT * FROM purchases WHERE uid=:uid", uid=session["uid"])
     myBooksLen = len(myShirts)
     return render_template("purchase_history.html", shoppingCart=shoppingCart, shopLen=shopLen, total=total, totItems=totItems, display=display, session=session, myBooks=myBooks, myBooksLen=myBooksLen)
+
+@app.route("/cart/")
+def cart():
+    if 'user' in session:
+        totItems, total, display = 0, 0, 0
+        shoppingCart = db.execute("SELECT image, SUM(qty), SUM(subTotal), price, id FROM cart")
+        shopLen = len(shoppingCart)
+        for i in range(shopLen):
+            total += shoppingCart[i]["SUM(subTotal)"]
+            totItems += shoppingCart[i]["SUM(qty)"]    
+    return render_template("cart.html", shoppingCart=shoppingCart, shopLen=shopLen, total=total, totItems=totItems, display=display, session=session)
 
 
 if __name__ == '__main__':
