@@ -62,5 +62,21 @@ Readers Paradise - Cart
                               </td>
                             </tr>
                           </tfoot>
-                          
+                          {% else %}
+                      <tr>
+                        <td colSpan="7"><h3>Shopping cart is empty :</h3></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colSpan="7">Get some books now!<br />
+                          <div>
+                            <a href="/"><button type="button" class="btn btn-secondary" data-dismiss="modal">Continue Shopping</button></a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tfoot>
+                    {% endif %}
+
+                    
 {% endblock %}
