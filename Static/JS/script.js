@@ -148,3 +148,8 @@ $(".target").on("click", function() {
 
     $button.parent().find("input").val(newVal);
 });
+
+$(window).load(function(){
+//pass
+})
+
