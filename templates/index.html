@@ -1,3 +1,7 @@
+{% extends "base_template.html" %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
 <div class="row" id="bookCard">
     {% for i in range(booksLen) %}
     <div class="col-sm">
@@ -31,3 +35,4 @@
     </div>
     {% endfor %}
 </div>
+{% endblock %}
