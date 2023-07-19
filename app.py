@@ -2,7 +2,7 @@ from flask import Flask, render_template,session, redirect,request
 from flask_sqlalchemy import SQLAlchemy
 from cs50 import SQL
 from flask_session import Session
-
+from datetime import datetime
 app = Flask(__name__)
 
 app.config["SESSION_PERMANENT"] = False
@@ -80,7 +80,7 @@ def history():
     total=0
     display=0
     myBooks = db.execute("SELECT * FROM purchases WHERE uid=:uid", uid=session["uid"])
-    myBooksLen = len(myShirts)
+    myBooksLen = len(myBooks)
     return render_template("purchase_history.html", shoppingCart=shoppingCart, shopLen=shopLen, total=total, totItems=totItems, display=display, session=session, myBooks=myBooks, myBooksLen=myBooksLen)
 
 @app.route("/cart/")
