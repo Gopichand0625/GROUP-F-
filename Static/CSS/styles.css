@@ -22,7 +22,7 @@ header {
 }
 
 .price {
-    color: seagreen;
+    color: rgb(25, 104, 59);
     font-weight: bold;    
 }
 
@@ -32,21 +32,21 @@ header {
 
 .checkout {
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 1em;
     font-weight: bold;
 }
 
 .add {
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 1em;
     font-weight: bold;
     color: white;
 }
 
 
 .add:hover {
-    background-color: deepskyblue;
-    border-color: deepskyblue;
+    background-color: rgb(141, 182, 196);
+    border-color: rgb(141, 182, 196);
 }
 
 .increment,
