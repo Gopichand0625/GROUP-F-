@@ -57,6 +57,20 @@ header {
         cursor: pointer;             
     }
 
+    .stepper-input{
+        display: flex;
+        display: -webkit-flex;
+        color: #222;
+        max-width: 120px;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    .book{
+        margin-bottom: 10px;
+    width: 200px;
+    }
+
 .decrement:hover, 
 .increment:hover {
     color: green;  
