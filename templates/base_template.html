@@ -48,8 +48,9 @@
                                                 <th scope="row">{{ i + 1 }}</th>
                                                 <td><img src="/static/Images/{{ shoppingCart[i]["image"] }}" width="30px" alt="{{ shoppingCart[i]["team"] }}" /></td>
                                                 <td>{{ shoppingCart[i]['SUM(qty)'] }}</td>
-                                                <td>{{ '${:,.2f}'.format(shoppingCart[i]["price"]) }}</td>
-                                                <td>{{ '${:,.2f}'.format(shoppingCart[i]['SUM(subTotal)']) }}</td>
+                                                <td>{{ '${:,.2f}'.format(shoppingCart[i]["price"]) if shoppingCart[i]["price"] is not none else 'N/A' }}</td>
+                                                <td>{{ '${:,.2f}'.format(shoppingCart[i]['SUM(subTotal)']) if shoppingCart[i]['SUM(subTotal)'] is not none else 'N/A' }}</td>
+
                                             </tr>
                                         </tbody>
                                         {% endfor %}
@@ -57,7 +58,7 @@
                                         <tfoot>
                                             <tr>
                                                 <td colSpan="7">
-                                                    Total: {{ '${:,.2f}'.format(total) }}<br /><br />
+                                                    Total: {{ '${:,.2f}'.format(total) if total is not none else 'N/A' }}<br /><br />
                                                     <div class="modal-footer">
                                                         <a href="/cart/"> <button type="button" class="btn btn-primary checkout">Make Changes</button></a>
                                                         <button type="button" class="btn btn-primary checkout" data-dismiss="modal">Continue Shopping</button>
@@ -155,7 +156,7 @@
                     </div>
                 </div>
             </footer>
-
+            <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                     crossorigin="anonymous"></script>
 

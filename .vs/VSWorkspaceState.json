@@ -1,13 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\instance",
     "\\Static",
-    "\\Static\\CSS",
-    "\\Static\\Images",
     "\\Static\\JS",
     "\\templates"
   ],
-  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
