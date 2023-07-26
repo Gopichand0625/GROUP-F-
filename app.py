@@ -106,7 +106,7 @@ def remove():
      out = int(request.args.get("id"))
      db.execute("DELETE from cart WHERE id=:id", id=out)
      totItems, total, display = 0, 0, 0
-     shoppingCart = db.execute("SELECT image, SUM(qty), SUM(subTotal), price, id FROM cart")
+     shoppingCart = db.execute("SELECT image, SUM(qty), SUM(subTotal), price, id FROM cart GROUP BY id")
      shopLen = len(shoppingCart)
      for i in range(shopLen):
         total += shoppingCart[i]["SUM(subTotal)"]
@@ -191,7 +191,6 @@ def update():
             price = bookitems[0]["onSalePrice"]
         else:
             price = bookitems[0]["price"]
-        team = bookitems[0]["team"]
         image = bookitems[0]["image"]
         subTotal = qty * price
        
