@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\shast\OneDrive\Documents\latest_git\GROUP-F-\env"
+VIRTUAL_ENV="C:\Users\Hemanth\Documents\GitHub\GROUP-F-\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
